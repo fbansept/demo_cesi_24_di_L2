@@ -9,12 +9,38 @@ public class Balle {
     private int y;
     private int vitesseX;
     private int vitesseY;
+    private Color couleur;
 
     public Balle(int x, int y, int vitesseX, int vitesseY) {
         this.x = x;
         this.y = y;
         this.vitesseX = vitesseX;
         this.vitesseY = vitesseY;
+        this.couleur = Color.RED;
+    }
+
+    public Balle(int x, int y, int vitesseX, int vitesseY, boolean couleurAleatoire) {
+        this.x = x;
+        this.y = y;
+        this.vitesseX = vitesseX;
+        this.vitesseY = vitesseY;
+
+        if(couleurAleatoire) {
+            this.couleur = new Color(
+                    (float)Math.random(),
+                    (float)Math.random(),
+                    (float)Math.random());
+        } else {
+            this.couleur = Color.RED;
+        }
+    }
+
+    public Balle(int x, int y, int vitesseX, int vitesseY, Color couleur) {
+        this.x = x;
+        this.y = y;
+        this.vitesseX = vitesseX;
+        this.vitesseY = vitesseY;
+        this.couleur = couleur;
     }
 
     public void deplacement() {
@@ -31,7 +57,7 @@ public class Balle {
     }
 
     public void dessiner(Graphics2D dessin) {
-        dessin.setColor(Color.RED);
+        dessin.setColor(couleur);
         dessin.fillOval(x,y, 50,50);
     }
 
@@ -65,5 +91,13 @@ public class Balle {
 
     public void setVitesseY(int vitesseY) {
         this.vitesseY = vitesseY;
+    }
+
+    public Color getCouleur() {
+        return couleur;
+    }
+
+    public void setCouleur(Color couleur) {
+        this.couleur = couleur;
     }
 }

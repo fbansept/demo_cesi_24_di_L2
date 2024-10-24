@@ -39,7 +39,16 @@ public class CasseBrique extends Canvas {
 
     public void recommencer() throws InterruptedException {
 
-        Balle balle = new Balle(200, 200, 5 , 4);
+        Balle[] balles = new Balle[1000];
+
+        for(int i = 0; i < 1000; i++) {
+            balles[i] = new Balle(
+                    aleatoire(50, LARGEUR - 50),
+                    aleatoire(50, HAUTEUR - 50),
+                    aleatoire(1,10),
+                    aleatoire(1,10),
+                    true);
+        }
 
         while(true) {
 
@@ -48,8 +57,10 @@ public class CasseBrique extends Canvas {
             dessin.setColor(Color.WHITE);
             dessin.fillRect(0, 0, LARGEUR, HAUTEUR);
 
-            balle.deplacement();
-            balle.dessiner(dessin);
+            for(Balle balle : balles) {
+                balle.deplacement();
+                balle.dessiner(dessin);
+            }
 
             dessin.dispose();
             getBufferStrategy().show();
@@ -60,7 +71,7 @@ public class CasseBrique extends Canvas {
     }
 
     public int aleatoire(int min, int max) {
-        return (int)(Math.random() * (max + 1) + min);
+        return (int)(Math.random() * (max - min + 1) + min);
     }
 
     public static void main(String[] args) throws InterruptedException {
