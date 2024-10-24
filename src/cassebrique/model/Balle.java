@@ -4,12 +4,10 @@ import cassebrique.CasseBrique;
 
 import java.awt.*;
 
-public class Balle {
-    private int x;
-    private int y;
-    private int vitesseX;
-    private int vitesseY;
-    private Color couleur;
+public class Balle extends Sprite{
+
+    protected int vitesseX;
+    protected int vitesseY;
 
     public Balle(int x, int y, int vitesseX, int vitesseY) {
         this.x = x;

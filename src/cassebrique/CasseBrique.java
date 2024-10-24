@@ -4,11 +4,14 @@ import cassebrique.model.Balle;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 public class CasseBrique extends Canvas {
 
     public static final int LARGEUR = 500;
     public static final int HAUTEUR = 600;
+
+    private ArrayList<Balle> listeBalle = new ArrayList();
 
     public CasseBrique() throws InterruptedException {
         System.out.println("debut du jeu");
@@ -39,16 +42,8 @@ public class CasseBrique extends Canvas {
 
     public void recommencer() throws InterruptedException {
 
-        Balle[] balles = new Balle[1000];
+        listeBalle.add(new Balle(LARGEUR / 2,HAUTEUR / 2, 3, 3));
 
-        for(int i = 0; i < 1000; i++) {
-            balles[i] = new Balle(
-                    aleatoire(50, LARGEUR - 50),
-                    aleatoire(50, HAUTEUR - 50),
-                    aleatoire(1,10),
-                    aleatoire(1,10),
-                    true);
-        }
 
         while(true) {
 
@@ -57,7 +52,7 @@ public class CasseBrique extends Canvas {
             dessin.setColor(Color.WHITE);
             dessin.fillRect(0, 0, LARGEUR, HAUTEUR);
 
-            for(Balle balle : balles) {
+            for(Balle balle : listeBalle) {
                 balle.deplacement();
                 balle.dessiner(dessin);
             }
