@@ -10,35 +10,11 @@ public class Balle extends Sprite{
     protected int vitesseY;
 
     public Balle(int x, int y, int vitesseX, int vitesseY) {
-        this.x = x;
-        this.y = y;
+
+        super(x, y , Color.RED);
+
         this.vitesseX = vitesseX;
         this.vitesseY = vitesseY;
-        this.couleur = Color.RED;
-    }
-
-    public Balle(int x, int y, int vitesseX, int vitesseY, boolean couleurAleatoire) {
-        this.x = x;
-        this.y = y;
-        this.vitesseX = vitesseX;
-        this.vitesseY = vitesseY;
-
-        if(couleurAleatoire) {
-            this.couleur = new Color(
-                    (float)Math.random(),
-                    (float)Math.random(),
-                    (float)Math.random());
-        } else {
-            this.couleur = Color.RED;
-        }
-    }
-
-    public Balle(int x, int y, int vitesseX, int vitesseY, Color couleur) {
-        this.x = x;
-        this.y = y;
-        this.vitesseX = vitesseX;
-        this.vitesseY = vitesseY;
-        this.couleur = couleur;
     }
 
     public void deplacement() {
